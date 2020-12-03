@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja">
+<head>
+<meta charset="utf-8">
+<title>test</title>
+<link rel="stylesheet" type="text/css" href="path/to/chartjs/dist/Chart.min.css">
+<!--Chart.jsの読み込み -->
+<script src="Chart.js"></script>
+</head>
+<body>
+<!--描画領域 -->
+<canvas id="canvas"></canvas>
+
+<script>
+    var ctx = document.getElementById("canvas").getContext("2d");
+    var myBar = new Chart(ctx, {
+        type: 'horizontalBar',                           //◆棒グラフ
+        data: {                                //◆データ
+            labels: ['A','B','C','D','E'],     //ラベル名
+            datasets: [{                       //データ設定
+                data: [20,70,50,25,90],          //データ内容
+                backgroundColor: ['#F97F51', '#25CCF7', '#D6A2E8', '#58B19F', '#FC427B']   //背景色
+            }]
+        },
+        options: {                             //◆オプション
+            responsive: true,                  //グラフ自動設定
+            legend: {                          //凡例設定
+                display: false                 //表示設定
+           },
+            title: {                           //タイトル設定
+                display: true,                 //表示設定
+                fontSize: 18,                  //フォントサイズ
+                text: '進捗状況'                //ラベル
+            },
+            scales: {                          //軸設定
+                yAxes: [{                      //y軸設定
+                    display: true,             //表示設定
+                    barPercentage: 0.4,           //棒グラフ幅
+                    categoryPercentage: 0.4,      //棒グラフ幅
+                    scaleLabel: {              //軸ラベル設定
+                       display: true,          //表示設定
+                     //  labelString: '縦軸',  //ラベル
+                       fontSize: 18               //フォントサイズ
+                    },
+                    ticks: {                      
+                        fontSize: 18            //フォントサイズ
+                    },
+                }],
+                xAxes: [{                         //x軸設定
+                    display: true,                //表示設定
+                    
+                    scaleLabel: {                 //軸ラベル設定
+                       display: true,             //表示設定
+                       labelString: '横軸',  //ラベル
+                       fontSize: 18               //フォントサイズ
+                    },
+                    ticks: {		//最大値最小値設定
+                    	min: 0,                   //最小値
+                        max: 100,                  //最大値
+                        fontSize: 18,           //フォントサイズ
+                        stepSize: 25               //軸間隔
+                    },
+                }],
+            },
+            layout: {                             //レイアウト
+                padding: {                          //余白設定
+                    left: 100,
+                    right: 50,
+                    top: 0,
+                    bottom: 0
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
